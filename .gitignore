@@ -1,0 +1,7 @@
+node_modules
+client/node_modules
+
+yarn.log
+yarn-error.log
+
+.vs-code

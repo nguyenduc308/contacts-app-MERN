@@ -1,0 +1,18 @@
+ul {
+    list-style: none;
+    height: 60px;
+    display: flex;
+    align-items: center;
+
+}
+ul li a {
+    padding: 8px 10px;
+}
+ul li a.active {
+    color: purple;
+}
+.user {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 10px;
+}
