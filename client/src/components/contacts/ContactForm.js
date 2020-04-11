@@ -2,10 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { Form, Input, Button } from "antd";
 import { FormStyled } from "./contactStyled";
 import ContactContext from '../../context/contact/contactContext'
-
+import AuthContext from '../../context/auth/authContext'
 const ContactForm = () => {
     const contactContext = useContext(ContactContext)
+    const authContext = useContext(AuthContext)
     const {addContact, current, clearCurrent, updateContact } = contactContext;
+    const { token } = authContext;
+    // console.log(token);
     const [contact, setContact] = useState({
         name: "",
         email: "",
@@ -31,9 +34,9 @@ const ContactForm = () => {
     });
     const handleSubmit = (e) => {
         if(current === null) {
-            addContact(contact);
+            addContact(token,contact);
         } else {
-            updateContact(contact)
+            updateContact(token,contact)
         }
         setContact({
             name: "",

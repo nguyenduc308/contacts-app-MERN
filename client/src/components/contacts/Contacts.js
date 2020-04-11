@@ -12,9 +12,9 @@ const Contacts = () => {
         getContacts();
         //eslint-disable-next-line
     },[])
-    if(contacts.length === 0) {
-        return <h3>Plese add new contact</h3>
-    }
+    // if(contacts.length === 0) {
+    //     return <h3>Plese add new contact</h3>
+    // }
     return (
         <>
         <Row>

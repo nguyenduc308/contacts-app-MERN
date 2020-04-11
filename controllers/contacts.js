@@ -75,22 +75,25 @@ module.exports.deleteContact = async (req, res) => {
     const { id } = req.params;
     try {
         const contact = await Contact.findById(id);
-        if(!contact) return res.status(404).json({eror: "Contact not found"});
+        if(!contact) return res.status(404).json({error: "Contact not found"});
         await contact.deleteOne({_id: id});
-        return res.status(204);
+        return res.status(200).json({msg: "Delete success"});
     } catch (error) {
-        console.error(error);
+        console.error(error);   
         return res.status(500).json({error: "Server error"})
     }
 }
 module.exports.updateContact = async (req, res) => {
-    const { id } = req.param;
+    const { id } = req.params;
     try {
         const contact = await Contact.findById(id);
         if(!contact) return res.status(404).json({error: "contact not found"});
-        Object.keys.forEach(key => contact[key] = req.body[key]);
-        await contact.save();
-        res.status(200).json({msg: "Success", data: contact})
+        console.log("Contact",contact)
+        console.log("Req", req.body)
+        Object.keys(contact).forEach(key => contact[key] = req.body[key]);
+        console.log("done ?",contact)
+        const _contact = await contact.save();
+        res.status(200).json({msg: "Success", data: _contact})
     } catch (error) {
         console.error(error);
         return res.status(500).json({error: "Server error"})

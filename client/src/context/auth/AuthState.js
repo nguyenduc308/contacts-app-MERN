@@ -61,13 +61,8 @@ const AuthState = props => {
     }
     //Login
     const login = async (data) => {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
         try {
-            const res = await callApi().post('/u/login', data, config)
+            const res = await callApi().post('/u/login', data)
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data

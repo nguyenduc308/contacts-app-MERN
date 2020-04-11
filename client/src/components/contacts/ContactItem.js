@@ -3,15 +3,18 @@ import { Skeleton, Card } from 'antd';
 import { EditOutlined, DeleteFilled, PhoneFilled, InboxOutlined } from '@ant-design/icons';
 import { CardStyled } from "./contactStyled";
 import ContactContext from "../../context/contact/contactContext"
+import AuthContext from '../../context/auth/authContext'
 const { Meta } = Card;
 
 const ContactItem = ({ contact }) => {
     const { _id, name, email, phone } = contact;
     const [loading] = useState(false);
     const contactContext = useContext(ContactContext);
+    const authContext = useContext(AuthContext);
+    const { token } = authContext;
     const { deleteContact, setCurrent, clearCurrent, clearFilter } = contactContext
     const onDelete = () => {
-        deleteContact(_id);
+        deleteContact(token,_id);
         clearCurrent()
         clearFilter()
     }
