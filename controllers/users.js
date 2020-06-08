@@ -15,7 +15,7 @@ exports.signUp = async (req, res) => {
         if(user) res.status(400).json({error: "Email has been taken! Please use other email"})
         const newUser = new User({email, password})
         await newUser.save()
-        const payload = {id:newUser._id,email};
+        const payload = {id:newUser._id, email};
         jwt.sign(
             payload,
             "ABC!242421424",

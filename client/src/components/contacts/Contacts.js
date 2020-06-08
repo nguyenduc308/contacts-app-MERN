@@ -4,17 +4,18 @@ import { Row, Col } from 'antd'
 import ContactItem from './ContactItem'
 import ContactForm from './ContactForm'
 import {ContactsStyle } from './contactStyled'
+import AuthContext from '../../context/auth/authContext'
+
 const Contacts = () => {
     const contactContext = useContext(ContactContext);
-    
+    const authContext = useContext(AuthContext);
+
     const { contacts, filtered, getContacts } = contactContext ;
+    const {token} = authContext;
     useEffect(()=> {
-        getContacts();
+        getContacts(token);
         //eslint-disable-next-line
     },[])
-    // if(contacts.length === 0) {
-    //     return <h3>Plese add new contact</h3>
-    // }
     return (
         <>
         <Row>

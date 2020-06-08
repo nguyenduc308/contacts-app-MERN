@@ -17,6 +17,7 @@ module.exports.authenticate = async (req, res, next) => {
     }
 }
 module.exports.authorized = (userTypeArr) => async (req, res, next) => {
+    console.log(req.user)
     const { id } = req.user;
     const user = await User.findById(id);
     const i = userTypeArr.findIndex(type => user.userType === type);

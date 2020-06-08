@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Form, Input, Button } from "antd";
 import { FormStyled } from "./contactStyled";
-import ContactContext from '../../context/contact/contactContext'
-import AuthContext from '../../context/auth/authContext'
+import ContactContext from '../../context/contact/contactContext';
+import AuthContext from '../../context/auth/authContext';
 const ContactForm = () => {
     const contactContext = useContext(ContactContext)
     const authContext = useContext(AuthContext)

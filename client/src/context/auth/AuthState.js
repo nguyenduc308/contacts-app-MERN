@@ -23,11 +23,11 @@ const AuthState = props => {
     }
 
     const [state, dispatch] = useReducer(authReducer, initState)
-    
+
     //Load User
     const loadUser = async () => {
         try {
-            const res = await callApi(localStorage.token).get('/u/auth')
+            const res = await callApi(localStorage.getItem('token')).get('/u/auth')
             dispatch({
                 type: USER_LOADED,
                 payload: res.data

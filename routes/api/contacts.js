@@ -10,22 +10,29 @@ const {
 
 const { authenticate, authorized } = require('../../middlewares/auth')
 
-router.get('/:id', getContactById)
+router.get('/:id',
+    authenticate,
+    authorized(["user", "admin"]),  
+    getContactById)
 router.post(
     '/',
     authenticate, 
-    authorized(["admin", "author"]), 
+    authorized(["user", "admin"]), 
     createContact);
-router.get('/', getAllContacts);
+router.get(
+    '/',
+    authenticate,
+    authorized(["user", "admin"]),  
+    getAllContacts);
 router.delete(
     '/:id', 
     authenticate, 
-    authorized(["admin", "author"]), 
+    authorized(["user", "admin"]), 
     deleteContact);
 router.patch(
     '/:id', 
     authenticate, 
-    authorized(["admin", "author"]), 
+    authorized(["user", "admin"]), 
     updateContact)
 
 

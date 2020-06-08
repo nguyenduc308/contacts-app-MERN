@@ -26,18 +26,19 @@ const ContactState = props => {
     };
     const [state, dispatch] = useReducer(contactReducer, initState);
     //Get Contact
-    const getContacts = async () => {
+    const getContacts = async (token) => {
         try {
-            const res = await callApi().get('/contacts')
+            const res = await callApi(token).get('/contacts')
             dispatch({
                 type: GET_CONTACTS,
                 payload: res.data.data
             })
         } catch (error) {
-            dispatch({
-                type: CONTACT_ERR,
-                payload: error.response.data.error
-            })
+            console.log(error)
+            // dispatch({
+            //     type: CONTACT_ERR,
+            //     payload: error.response.data.error
+            // })
         }
     }
     //Add contact
